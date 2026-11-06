@@ -1,10 +1,21 @@
 {
   "name": "bharat-mcp",
   "version": "0.4.0",
-  "description": "MCP server for India: GST invoices, GSTIN validation, UPI & bank statement analysis, IFSC and PIN code lookup.",
+  "description": "MCP server for India: GST invoices, official GST rates and HSN/SAC search, GSTIN validation, UPI and bank statement (PDF/CSV) analysis, IFSC and PIN code lookup.",
+  "mcpName": "io.github.nansa1/bharat-mcp",
+  "type": "module",
   "main": "dist/index.js",
+  "bin": {
+    "bharat-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "data",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "build": "tsc && chmod +x dist/index.js",
+    "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', 0o755)\"",
     "dev": "tsc --watch",
     "test": "npm run build && node --test test/*.test.mjs",
     "inspect": "npx @modelcontextprotocol/inspector node dist/index.js",
@@ -23,9 +34,25 @@
     "invoice",
     "ifsc",
     "pincode",
-    "bank-statement"
+    "bank-statement",
+    "gst-rates",
+    "hsn",
+    "sac",
+    "hsn-code"
   ],
+  "author": "nansa1",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nansa1/bharat-mcp.git"
+  },
+  "homepage": "https://github.com/nansa1/bharat-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/nansa1/bharat-mcp/issues"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.32.2",
     "pdfjs-dist": "^6.5.438",
@@ -36,18 +63,5 @@
     "@types/node": "^26.6.6",
     "@types/pdfkit": "^0.17.7",
     "typescript": "^7.0.2"
-  },
-  "type": "module",
-  "bin": {
-    "bharat-mcp": "dist/index.js"
-  },
-  "files": [
-    "dist",
-    "data",
-    "README.md",
-    "LICENSE"
-  ],
-  "engines": {
-    "node": ">=22.13"
   }
 }
