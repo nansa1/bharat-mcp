@@ -1,0 +1,80 @@
+{
+  "_about": "Amendments to the goods rate notifications after 17.09.2025, transcribed from the Gazette of India. The build checks each quoted text against the amending PDF and each target entry against the base schedule. Gazette checked for Ministry of Finance (Department of Revenue) issues through 2026-11-05.",
+  "checked_through": "2026-11-05",
+  "notifications": [
+    {
+      "id": "corrigenda-18-09-2025",
+      "notification": "Corrigenda G.S.R. 676(E)-680(E) dated 18.09.2025",
+      "gazette_id": "CG-DL-E-18092025-266246",
+      "file": "corrigenda-18-09-2025.pdf",
+      "effective": "2025-09-22",
+      "summary": "Re-letters sub-items (a)-(h) inside one description of 09/2025 and re-numbers (i)-(x) inside 10/2025-IT/UT; corrects a cross-reference '2.5%' to '5%' in 10/2025-Integrated Tax. No change to any rate, code or entry.",
+      "operations": []
+    },
+    {
+      "id": "19/2025-CTR",
+      "notification": "19/2025-Central Tax (Rate), G.S.R. 946(E) dated 31.12.2025",
+      "gazette_id": "CG-DL-E-31122025-268978",
+      "file": "rates-31-12-2025.pdf",
+      "effective": "2026-02-01",
+      "summary": "Moves pan masala and tobacco products from 28% (Schedule VII, omitted) to 40% (Schedule III) and biris to 18% (Schedule II), from 1 February 2026, when compensation cess became nil.",
+      "operations": [
+        {"op": "insert", "schedule": "II", "after": "4", "sno": "4A", "codes_text": "2403 19 21, 2403 19 29", "description": "Biris"},
+        {"op": "insert", "schedule": "III", "after": "13", "sno": "14", "codes_text": "2106 90 20", "description": "Pan masala"},
+        {"op": "insert", "schedule": "III", "after": "14", "sno": "15", "codes_text": "2401", "description": "Unmanufactured tobacco; tobacco refuse [other than tobacco leaves]"},
+        {"op": "insert", "schedule": "III", "after": "15", "sno": "16", "codes_text": "2402", "description": "Cigars, cheroots, cigarillos and cigarettes, of tobacco or of tobacco substitutes"},
+        {"op": "insert", "schedule": "III", "after": "16", "sno": "17", "codes_text": "2403 (other than 2403 19 21, 2403 19 29)", "description": "Other manufactured tobacco and manufactured tobacco substitutes; homogenised or reconstituted tobacco; tobacco extracts and essences [other than biris]"},
+        {"op": "insert", "schedule": "III", "after": "17", "sno": "18", "codes_text": "2404 11 00", "description": "Products containing tobacco or reconstituted tobacco and intended for inhalation without combustion"},
+        {"op": "insert", "schedule": "III", "after": "18", "sno": "19", "codes_text": "2404 19 00", "description": "Products containing tobacco or nicotine substitutes and intended for inhalation without combustion"},
+        {"op": "omit_schedule", "schedule": "VII", "quote": "the Schedule VII – 14%, and the entries relating thereto shall be omitted"}
+      ]
+    },
+    {
+      "id": "01/2026-CTR",
+      "notification": "01/2026-Central Tax (Rate), G.S.R. 328(E) dated 30.04.2026",
+      "gazette_id": "CG-DL-E-01052026-272190",
+      "file": "align-30-04-2026.pdf",
+      "effective": "2026-05-01",
+      "summary": "Updates tariff codes for beverages under 2202 99 to match changes in the Customs Tariff from 1 May 2026.",
+      "operations": [
+        {"op": "substitute_codes", "schedule": "I", "sno": "150", "codes_text": "2202 99 21, 2202 99 29"},
+        {"op": "substitute_codes", "schedule": "I", "sno": "151", "codes_text": "22029931, 22029939"},
+        {"op": "substitute_codes", "schedule": "III", "sno": "2", "codes_text": "2202 99 90, 2202 99 91, 2202 99 99"},
+        {"op": "substitute_codes", "schedule": "III", "sno": "3", "codes_text": "2202 99 91, 2202 99 99"}
+      ]
+    },
+    {
+      "id": "02/2026-CTR",
+      "notification": "02/2026-Central Tax (Rate), G.S.R. 921(E) dated 27.10.2026",
+      "gazette_id": "CG-DL-E-27102026-277454",
+      "file": "goods-57th-27-10-2026.pdf",
+      "effective": "2026-11-01",
+      "summary": "57th GST Council: sea-weed extract bio-stimulants included in organic fertilisers (5%); retreaded tractor tyres moved to 5%.",
+      "operations": [
+        {"op": "substitute_description", "schedule": "I", "sno": "237", "description": "All goods i.e. animal or vegetable fertilisers or organic fertilisers pre-packaged and labelled. Explanation. – This entry includes, sea-weed extract based bio-stimulants, as registered under Schedule VI to the Fertiliser (Inorganic, Organic or Mixed) (Control) Order, 1985."},
+        {"op": "insert", "schedule": "I", "after": "272", "sno": "272A", "codes_text": "4012", "description": "Retreaded tractor tyres"},
+        {"op": "substitute_description", "schedule": "II", "sno": "138", "description": "Retreaded or used pneumatic tyres of rubber (other than retreaded tractor tyres); solid or cushion tyres, tyre treads and tyre flaps, of rubber"}
+      ]
+    },
+    {
+      "id": "03/2026-CTR",
+      "notification": "03/2026-Central Tax (Rate), G.S.R. 924(E) dated 27.10.2026",
+      "gazette_id": "CG-DL-E-27102026-277454",
+      "file": "goods-57th-27-10-2026.pdf",
+      "effective": "2026-11-01",
+      "summary": "57th GST Council: psyllium seeds (isabgol) exempt.",
+      "operations": [
+        {"op": "insert", "schedule": "Exempt", "after": "87", "sno": "87A", "codes_text": "1211 90 13", "description": "Psyllium seeds (Isobgul/Isobgol)"}
+      ]
+    },
+    {
+      "id": "03/2025-CCR",
+      "notification": "03/2025-Compensation Cess (Rate), G.S.R. 945(E) dated 31.12.2025",
+      "gazette_id": "CG-DL-E-31122025-268974",
+      "file": "compensation-cess-31-12-2025.pdf",
+      "effective": "2026-02-01",
+      "summary": "Compensation cess set to Nil for every entry of the compensation cess schedule from 1 February 2026.",
+      "operations": []
+    }
+  ]
+}

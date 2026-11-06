@@ -1,0 +1,53 @@
+{
+  "name": "bharat-mcp",
+  "version": "0.4.0",
+  "description": "MCP server for India: GST invoices, GSTIN validation, UPI & bank statement analysis, IFSC and PIN code lookup.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc && chmod +x dist/index.js",
+    "dev": "tsc --watch",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "inspect": "npx @modelcontextprotocol/inspector node dist/index.js",
+    "prepublishOnly": "npm run build",
+    "update-hsn": "python3 scripts/build_hsn_data.py",
+    "update-rates": "python3 scripts/build_gst_rates.py --ctr sources/gazette/ctr-09-2025.pdf --itr sources/gazette/itr-09-2025.pdf --exempt sources/gazette/ctr-10-2025-exemption.pdf --manifest sources/gazette/manifest.json"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "india",
+    "gst",
+    "gstin",
+    "upi",
+    "invoice",
+    "ifsc",
+    "pincode",
+    "bank-statement"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "pdfjs-dist": "^6.5.438",
+    "pdfkit": "^0.20.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/pdfkit": "^0.17.7",
+    "typescript": "^7.0.2"
+  },
+  "type": "module",
+  "bin": {
+    "bharat-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "data",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22.13"
+  }
+}

@@ -1,0 +1,77 @@
+[
+ {
+  "file": "align-30-04-2026.pdf",
+  "subject": "GST notification to align with changes in First Schedule",
+  "gazette_id": "CG-DL-E-01052026-272190",
+  "url": "https://egazette.gov.in/WriteReadData/2026/272190.pdf",
+  "part": "Part II-Section 3-Sub-Section (i)",
+  "issued": "30-Apr-2026",
+  "sha256": "604372550c47e69c150138ae0bd7841133a9ff49f94759fd8d6e4dfc77892d9d"
+ },
+ {
+  "file": "compensation-cess-31-12-2025.pdf",
+  "subject": "compensation cess rate",
+  "gazette_id": "CG-DL-E-31122025-268974",
+  "url": "https://egazette.gov.in/WriteReadData/2025/268974.pdf",
+  "part": "Part II-Section 3-Sub-Section (i)",
+  "issued": "31-Dec-2025",
+  "sha256": "60e723ee8f029f9e5175b20cc4472d23f5ca90edc7131fddc7d214fcbf067148"
+ },
+ {
+  "file": "corrigenda-18-09-2025.pdf",
+  "subject": "Corrigenda to GST rate notifications",
+  "gazette_id": "CG-DL-E-18092025-266246",
+  "url": "https://egazette.gov.in/WriteReadData/2025/266246.pdf",
+  "part": "Part II-Section 3-Sub-Section (i)",
+  "issued": "18-Sep-2025",
+  "sha256": "8ac71aa963804916c216e3f5cf5a50ac35a5c117007b18dda07815ccdbb65673"
+ },
+ {
+  "file": "ctr-09-2025.pdf",
+  "subject": "Notification Number 9 of 2025 CTR",
+  "gazette_id": "CG-DL-E-17092025-266209",
+  "url": "https://egazette.gov.in/WriteReadData/2025/266209.pdf",
+  "part": "Part II-Section 3-Sub-Section (i)",
+  "issued": "17-Sep-2025",
+  "published": "17-Sep-2025",
+  "sha256": "fb8625fa5499004a5b3eafc84ccf68a8ff1b08c8ade351f6ac3e8d9d256c8f45"
+ },
+ {
+  "file": "ctr-10-2025-exemption.pdf",
+  "subject": "Notification Number 10 of 2025 GST CT IT UT",
+  "gazette_id": "CG-DL-E-17092025-266210",
+  "url": "https://egazette.gov.in/WriteReadData/2025/266210.pdf",
+  "part": "Part II-Section 3-Sub-Section (i)",
+  "issued": "17-Sep-2025",
+  "published": "17-Sep-2025",
+  "sha256": "2e205f8a16358bda64609f54bb60376e23b83dd9c14a98ca9d283db19c5994d3"
+ },
+ {
+  "file": "goods-57th-27-10-2026.pdf",
+  "subject": "57TH GST Council Recommendations pertaining to supply of goods",
+  "gazette_id": "CG-DL-E-27102026-277454",
+  "url": "https://egazette.gov.in/WriteReadData/2026/277454.pdf",
+  "part": "Part II-Section 3-Sub-Section (i)",
+  "issued": "27-Oct-2026",
+  "sha256": "11dbe187cc06f37e37f1c8d58344f2a0397f6397d77ea469e25a07b63853cf57"
+ },
+ {
+  "file": "itr-09-2025.pdf",
+  "subject": "Notification number 9 of 2025 ITR",
+  "gazette_id": "CG-DL-E-17092025-266211",
+  "url": "https://egazette.gov.in/WriteReadData/2025/266211.pdf",
+  "part": "Part II-Section 3-Sub-Section (i)",
+  "issued": "17-Sep-2025",
+  "published": "17-Sep-2025",
+  "sha256": "441235bb02c1ba6705bed1fa7f0f535b9fe7cf0d43c1e0af35da41a2f82638cb"
+ },
+ {
+  "file": "rates-31-12-2025.pdf",
+  "subject": "GST Rates notification",
+  "gazette_id": "CG-DL-E-31122025-268978",
+  "url": "https://egazette.gov.in/WriteReadData/2025/268978.pdf",
+  "part": "Part II-Section 3-Sub-Section (i)",
+  "issued": "31-Dec-2025",
+  "sha256": "602cffc59754dbe85e7098bf9cd1e25dee81acd022618a48d1c68879e5505106"
+ }
+]
