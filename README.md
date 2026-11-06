@@ -37,21 +37,21 @@ Requires Node.js 22.13 or later.
 
 **Claude Code**
 ```bash
-claude mcp add bharat -- npx -y bharat-mcp
+claude mcp add bharat -- npx -y @adnansaliyawala/bharat-mcp
 ```
 
 **Claude Desktop**: add this to `claude_desktop_config.json` (Settings → Developer → Edit Config):
 ```json
 {
   "mcpServers": {
-    "bharat": { "command": "npx", "args": ["-y", "bharat-mcp"] }
+    "bharat": { "command": "npx", "args": ["-y", "@adnansaliyawala/bharat-mcp"] }
   }
 }
 ```
 
 **From source**
 ```bash
-git clone <this repo> && cd bharat-mcp && npm install && npm run build
+git clone https://github.com/nansa1/bharat-mcp && cd bharat-mcp && npm install && npm run build
 claude mcp add bharat -- node /absolute/path/to/bharat-mcp/dist/index.js
 ```
 

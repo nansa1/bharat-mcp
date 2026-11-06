@@ -1,5 +1,5 @@
 {
-  "name": "bharat-mcp",
+  "name": "@adnansaliyawala/bharat-mcp",
   "version": "0.4.0",
   "description": "MCP server for India: GST invoices, official GST rates and HSN/SAC search, GSTIN validation, UPI and bank statement (PDF/CSV) analysis, IFSC and PIN code lookup.",
   "mcpName": "io.github.nansa1/bharat-mcp",
@@ -49,6 +49,9 @@
   "homepage": "https://github.com/nansa1/bharat-mcp#readme",
   "bugs": {
     "url": "https://github.com/nansa1/bharat-mcp/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "engines": {
     "node": ">=22.13"
