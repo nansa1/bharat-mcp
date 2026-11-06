@@ -21,7 +21,8 @@
     "inspect": "npx @modelcontextprotocol/inspector node dist/index.js",
     "prepublishOnly": "npm run build",
     "update-hsn": "python3 scripts/build_hsn_data.py",
-    "update-rates": "python3 scripts/build_gst_rates.py --ctr sources/gazette/ctr-09-2025.pdf --itr sources/gazette/itr-09-2025.pdf --exempt sources/gazette/ctr-10-2025-exemption.pdf --manifest sources/gazette/manifest.json"
+    "update-rates": "python3 scripts/build_gst_rates.py --ctr sources/gazette/ctr-09-2025.pdf --itr sources/gazette/itr-09-2025.pdf --exempt sources/gazette/ctr-10-2025-exemption.pdf --manifest sources/gazette/manifest.json",
+    "version": "node scripts/sync-server-json.mjs && git add server.json"
   },
   "keywords": [
     "mcp",

@@ -1,0 +1,101 @@
+# Publishes to npm and the MCP Registry when a GitHub release is published.
+#
+# No secrets are needed:
+#   - npm uses Trusted Publishing (OIDC). Configure it once on npmjs.com:
+#     package Settings -> Trusted publishing -> GitHub Actions with
+#     user "nansa1", repository "bharat-mcp", workflow filename "release.yml",
+#     and tick "npm publish" under Allowed actions.
+#   - The MCP Registry uses GitHub OIDC (mcp-publisher login github-oidc).
+#
+# To release: npm version patch  ->  git push --follow-tags  ->  create a GitHub release from the new tag.
+name: Release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  id-token: write # OIDC for npm trusted publishing and the MCP Registry
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest # trusted publishing needs a GitHub-hosted runner
+    env:
+      MCP_PUBLISHER_VERSION: v1.8.7
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
+          package-manager-cache: false # never use caching in release builds
+
+      - name: Check npm supports trusted publishing (11.5.1 or newer)
+        run: |
+          v="$(npm --version)"
+          echo "npm $v"
+          node -e 'const [a,b,c]=process.argv[1].split(".").map(Number); process.exit(a>11||(a===11&&(b>5||(b===5&&c>=1)))?0:1)' "$v" \
+            || { echo "::error::npm $v is too old for trusted publishing; need 11.5.1+"; exit 1; }
+
+      - name: Check the release tag matches package.json and server.json
+        run: node scripts/check-release.mjs "$GITHUB_REF_NAME"
+
+      - run: npm ci
+
+      - run: npm test
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
+
+      - name: Download and verify mcp-publisher
+        run: |
+          set -euo pipefail
+          archive="mcp-publisher_linux_amd64.tar.gz"
+          base_url="https://github.com/modelcontextprotocol/registry/releases/download/${MCP_PUBLISHER_VERSION}"
+          curl --fail --location --silent --show-error --output "$archive" "$base_url/$archive"
+          curl --fail --location --silent --show-error --output "$archive.sigstore.json" "$base_url/$archive.sigstore.json"
+          cosign verify-blob \
+            --bundle "$archive.sigstore.json" \
+            --certificate-identity "https://github.com/modelcontextprotocol/registry/.github/workflows/release.yml@refs/tags/${MCP_PUBLISHER_VERSION}" \
+            --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
+            "$archive"
+          tar xzf "$archive" mcp-publisher
+          rm -f "$archive" "$archive.sigstore.json"
+
+      # Validate before publishing anything, so a bad server.json stops the release cleanly
+      - name: Validate server.json with the MCP Registry
+        run: ./mcp-publisher validate
+
+      - name: Publish to npm
+        run: |
+          name="$(node -p 'require("./package.json").name')"
+          version="$(node -p 'require("./package.json").version')"
+          if npm view "$name@$version" version >/dev/null 2>&1; then
+            echo "$name@$version is already on npm; skipping (re-run after a registry failure)."
+          else
+            npm publish
+          fi
+
+      - name: Wait until npm serves the new version
+        run: |
+          name="$(node -p 'require("./package.json").name')"
+          version="$(node -p 'require("./package.json").version')"
+          for i in $(seq 1 30); do
+            if npm view "$name@$version" mcpName >/dev/null 2>&1; then echo "available"; exit 0; fi
+            sleep 10
+          done
+          echo "::error::$name@$version not visible on npm after 5 minutes"; exit 1
+
+      - name: Log in to the MCP Registry
+        run: ./mcp-publisher login github-oidc
+
+      - name: Publish to the MCP Registry
+        run: ./mcp-publisher publish

@@ -132,6 +132,28 @@ npm run inspect   # opens the MCP Inspector
 
 Contributions are very welcome, especially new bank narration formats (add a sample to `test/`), merchant keywords in `src/upi.ts`, and new tools (see the roadmap).
 
+## Releasing (maintainers)
+
+Every push and pull request runs the tests on Ubuntu and Windows with Node 22 and 24 (`.github/workflows/ci.yml`).
+
+Publishing is automatic when a GitHub release is published (`.github/workflows/release.yml`). The workflow:
+1. checks that the tag, `package.json` and `server.json` agree;
+2. runs the tests;
+3. validates `server.json`;
+4. publishes to npm with Trusted Publishing (no token; provenance is added automatically);
+5. publishes to the MCP Registry with GitHub OIDC.
+
+To release a new version:
+
+```bash
+npm version patch          # or minor / major; also updates server.json, commits and tags
+git push --follow-tags
+```
+
+Then on GitHub: **Releases → Draft a new release**, choose the new tag (e.g. `v0.4.1`), and click **Publish release**.
+
+One-time setup on npmjs.com: in the package's **Settings → Trusted publishing**, add GitHub Actions with user `nansa1`, repository `bharat-mcp`, workflow `release.yml`, and tick **npm publish** under Allowed actions.
+
 ## Roadmap
 
 - [ ] E-invoice JSON (IRN schema) and e-way bill helpers
