@@ -1,4 +1,5 @@
 // Talks to the real server over stdio using the official MCP client.
+import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { createServer } from "node:http";
@@ -74,7 +75,7 @@ test("MCP server end to end", async (t) => {
   assert.ok(existsSync(ok.data.file_path) && statSync(ok.data.file_path).size > 1000);
   console.log("invoice:", ok.data.file_path);
 
-  const st = await call("analyze_bank_statement", { file_path: new URL("./fixtures/hdfc_sample.csv", import.meta.url).pathname });
+  const st = await call("analyze_bank_statement", { file_path: fileURLToPath(new URL("./fixtures/hdfc_sample.csv", import.meta.url)) });
   assert.equal(st.data.period.transactions, 14);
   const rows = await call("analyze_bank_statement", { transactions: [
     { date: "01/10/2026", narration: "UPI/DR/412345678901/SWIGGY/YESB/swiggy@ybl/Payment", debit: 300 },

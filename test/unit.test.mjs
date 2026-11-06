@@ -1,4 +1,5 @@
 import { test } from "node:test";
+import { fileURLToPath } from "node:url";
 import assert from "node:assert/strict";
 import { validateGstin, gstinChecksum, calculateGst, amountInWords, resolveStateCode } from "../dist/gst.js";
 import { parseUpiNarration, parseIndianDate, parseAmount, analyse, loadStatement } from "../dist/upi.js";
@@ -90,7 +91,7 @@ test("dates and amounts", () => {
 });
 
 test("CSV statement end to end", () => {
-  const s = loadStatement(new URL("./fixtures/hdfc_sample.csv", import.meta.url).pathname);
+  const s = loadStatement(fileURLToPath(new URL("./fixtures/hdfc_sample.csv", import.meta.url)));
   assert.equal(s.transactions.length, 14);
   const a = analyse(s.transactions);
   assert.equal(a.totals.received, 170000);

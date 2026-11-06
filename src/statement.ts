@@ -1,8 +1,12 @@
 // Loads a statement from CSV or PDF, and exports categorised transactions as CSV.
 import { writeFileSync, mkdirSync, existsSync } from "node:fs";
+import { homedir } from "node:os";
 import { dirname, basename, extname, join, resolve } from "node:path";
 import { parsePdfStatement, type PdfTxn } from "./pdf.js";
 import { enrich, loadStatement as loadCsv } from "./upi.js";
+
+/** Expand a leading ~ (works with / and \\ separators; Windows has no HOME variable). */
+const expandHome = (p: string) => p.replace(/^~(?=$|[\\/])/, homedir());
 
 export interface LoadedStatement {
   transactions: PdfTxn[];
@@ -10,7 +14,7 @@ export interface LoadedStatement {
 }
 
 export async function loadStatementFile(path: string, opts: { password?: string; debug?: boolean } = {}): Promise<LoadedStatement> {
-  const file = resolve(path.replace(/^~(?=$|\/)/, process.env.HOME ?? "~"));
+  const file = resolve(expandHome(path));
   if (!existsSync(file)) throw new Error(`File not found: ${file}`);
   if (/\.pdf$/i.test(file)) {
     try {
@@ -44,8 +48,8 @@ const csvCell = (v: unknown) => {
 };
 
 export function writeTransactionsCsv(txns: PdfTxn[], sourcePath: string, outputPath?: string): string {
-  const src = resolve(sourcePath.replace(/^~(?=$|\/)/, process.env.HOME ?? "~"));
-  let out = outputPath ? resolve(outputPath.replace(/^~(?=$|\/)/, process.env.HOME ?? "~")) : join(dirname(src), `${basename(src, extname(src))}_converted.csv`);
+  const src = resolve(expandHome(sourcePath));
+  let out = outputPath ? resolve(expandHome(outputPath)) : join(dirname(src), `${basename(src, extname(src))}_converted.csv`);
   if (!/\.csv$/i.test(out)) out = join(out, `${basename(src, extname(src))}_converted.csv`);
   mkdirSync(dirname(out), { recursive: true });
   const rows = enrich(txns);
