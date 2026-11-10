@@ -166,7 +166,8 @@ One-time setup on npmjs.com: in the package's **Settings → Trusted publishing*
 - [ ] Train PNR and running status, via a pluggable provider (needs an API key)
 - [ ] Hindi and regional-language output
 
-[![M8ven Score](https://m8ven.ai/badge/mcp/nansa1-bharat-mcp-wdftvs)](https://m8ven.ai/mcp/nansa1-bharat-mcp-wdftvs?s=readme)
 ## License
 
 MIT
+
+[![M8ven Score](https://m8ven.ai/badge/mcp/nansa1-bharat-mcp-wdftvs)](https://m8ven.ai/mcp/nansa1-bharat-mcp-wdftvs?s=readme)
